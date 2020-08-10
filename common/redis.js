@@ -9,8 +9,8 @@ var logger = require('./logger')
 //   password: config.redis_password,
 // });
 
-var client = new Redis(config.redis);
-// var client = new Redis(process.env.REDIS_URL);
+// var client = new Redis(config.redis);
+var client = new Redis(process.env.REDIS_URL);
 
 
 client.on('error', function (err) {
