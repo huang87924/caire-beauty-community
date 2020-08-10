@@ -67,7 +67,8 @@
   "scripts": {
     "test": "make test",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "start": "node app.js"
   },
   "snyk": true
 }
