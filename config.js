@@ -6,7 +6,7 @@ var path = require('path');
 
 var config = {
   // Used for local debugging when debug is true
-  debug: false,
+  debug: true,
 
   get mini_assets() { return !this.debug; }, // Whether to enable static file merge compression, see Loader in view
 
