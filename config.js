@@ -39,18 +39,12 @@ var config = {
 
   // redis 
   // redis://h:p645ff027bdde2301cc3b6a919bc4acf125944e67770aead2ed113f932fad02dc@ec2-54-211-0-35.compute-1.amazonaws.com:24589
-  // redis_host: '127.0.0.1',
-  // redis_port: 6379,
-  // redis_db: 0,
-  // redis_password: '87924395Hu',
+  redis_host: 'ec2-54-211-0-35.compute-1.amazonaws.com',
+  redis_port: 24589,
+  redis_db: 0,
+  redis_password: 'p645ff027bdde2301cc3b6a919bc4acf125944e67770aead2ed113f932fad02dc',
 
-  // redis:{
-  //   port:6379,
-  //   host:'127.0.0.1',
-  //   db:0,
-  //   password:'87924395Hu'
-  // } || process.env.REDIS_URL,
-
+  
 
   session_secret: 'node_club_secret', // must change
   auth_cookie_name: 'node_club',

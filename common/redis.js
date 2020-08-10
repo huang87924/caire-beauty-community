@@ -2,15 +2,15 @@ var config = require('../config');
 var Redis = require('ioredis');
 var logger = require('./logger')
 
-// var client = new Redis({
-//   port: config.redis_port,
-//   host: config.redis_host,
-//   db: config.redis_db,
-//   password: config.redis_password,
-// });
+var client = new Redis({
+  port: config.redis_port,
+  host: config.redis_host,
+  db: config.redis_db,
+  password: config.redis_password,
+});
 
 // var client = new Redis(config.redis);
-var client = new Redis(process.env.REDIS_URL);
+// var client = new Redis(process.env.REDIS_URL);
 
 
 client.on('error', function (err) {
