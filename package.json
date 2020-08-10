@@ -51,7 +51,8 @@
     "validator": "5.1.0",
     "xmlbuilder": "7.0.0",
     "xss": "0.2.10",
-    "snyk": "^1.88.0"
+    "snyk": "^1.88.0",
+    "loader-connect": "1.0.1"
   },
   "devDependencies": {
     "errorhandler": "1.4.3",
