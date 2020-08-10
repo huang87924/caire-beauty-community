@@ -48,7 +48,7 @@ var config = {
   auth_cookie_name: 'node_club',
 
   // port
-  port: 3000,
+  port: 3000 || process.env.PORT,
 
   // The number of topics displayed in the topic list
   list_topic_count: 20,
