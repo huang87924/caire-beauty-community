@@ -1,0 +1,179 @@
+<%- partial('../sidebar') %>
+
+<div id='content'>
+  <div class='panel'>
+    <div class='header'>
+      <ul class='breadcrumb'>
+        <li><a href='/'>Home</a><span class='divider'>/ <%= user.loginname %></span></li>
+      </ul>
+    </div>
+    <div class='inner userinfo'>
+      <div class='user_big_avatar'>
+        <img src="<%= proxy(user.avatar_url) %>" class="user_avatar" title="<%= user.loginname %>"/>
+      </div>
+      <a class='dark'><%= user.loginname %></a>
+
+      <div class='user_profile'>
+        <ul class='unstyled'>
+          <span class='big'><%= user.score %></span> Score
+          <% if (user.collect_topic_count) {%>
+          <li>
+            <a class='dark' href="/user/<%= user.loginname %>/collections" target='_blank'>
+              <span class='big collect-topic-count'><%= user.collect_topic_count %></span> saved topics
+            </a>
+          </li>
+          <%}%>
+          <% if (user.url) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-home"></i>
+            <a class='dark' href="<%= user.url %>" target='_blank'><%= user.url %></a>
+          </li>
+          <% } %>
+          <% if (user.location) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-map-marker"></i>
+            <span class='dark'><%= user.location %></span>
+          </li>
+          <% } %>
+          <% if (user.githubUsername) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-github"></i>
+            <a class='dark' href="https://github.com/<%= user.githubUsername %>" target='_blank'>
+              @<%= user.githubUsername %>
+            </a>
+          </li>
+          <% } %>
+          <% if (user.weibo) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-twitter"></i>
+            <a class='dark' href="<%= user.weibo %>" target='_blank'><%= user.weibo %></a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+      <p class='col_fade'>Registration date <%= user.create_at_ago() %></p>
+      <% if (current_user && current_user.is_admin) { %>
+      <% if (!user.is_star) { %>
+      <span class='span-common' id='set_star_btn' action='set_star'>Set star</span>
+      <% } else { %>
+      <span class='span-common' id='set_star_btn' action='cancel_star'>Cancel star</span>
+      <% } %>
+
+      <% if (!user.is_block) { %>
+      <span class='span-common' id='set_block_btn' action='set_block'>Block</span>
+      <% } else { %>
+      <span class='span-common' id='set_block_btn' action='cancel_block'>Cancel block</span>
+      <% } %>
+
+      <span class="span-common" id="delete_all">Delete all comments</span>
+
+      <br/><br/>
+      Email (Seen by Administrator): <a href="mailto:<%= user.email %>"><%= user.email %></a>
+      <% if (!user.active) { %>
+      <a href="/active_account?key=<%- typeof(token) !== 'undefined' && token %>&name=<%= user.loginname %>"
+         target="_blank">
+         <span class="span-common">
+           Activate account
+         </span>
+       </a>
+      <% } %>
+      <% } %>
+    </div>
+  </div>
+
+  <div class='panel'>
+    <div class='header'>
+      <span class='col_fade'>Topics created recently</span>
+    </div>
+    <% if (typeof(recent_topics) !== 'undefined' && recent_topics.length > 0) { %>
+    <%- partial('../topic/abstract', { collection: recent_topics, as: 'topic' }) %>
+    <div class='cell more'>
+      <a class='dark' href="/user/<%= user.loginname %>/topics">For more</a>
+    </div>
+    <% } else { %>
+    <div class='inner'>
+      <p>No topics</p>
+    </div>
+    <% } %>
+  </div>
+
+  <div class='panel'>
+    <div class='header'>
+      <span class='col_fade'>Topics participated recently</span>
+    </div>
+    <% if (typeof(recent_replies) !== 'undefined' && recent_replies.length > 0) { %>
+    <%- partial('../topic/abstract', { collection: recent_replies, as: 'topic' }) %>
+    <div class='cell more'>
+      <a class='dark' href="/user/<%= user.loginname %>/replies">For more</a>
+    </div>
+    <% } else { %>
+    <div class='inner'>
+      <p>No topics</p>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<% if (current_user) { %>
+<script>
+  $(document).ready(function () {
+    $('#set_star_btn').click(function () {
+      var $me = $(this);
+      var action = $me.attr('action');
+      var params = {
+        user_id: '<%= user._id %>',
+        _csrf: '<%- csrf %>'
+      };
+      $.post('/user/' + action, params, function (data) {
+        if (data.status === 'success') {
+          if (action === 'set_star') {
+            $me.html('cancel_star');
+            $me.attr('action', 'cancel_star');
+          } else {
+            $me.html('set_star');
+            $me.attr('action', 'set_star');
+          }
+        }
+      }, 'json');
+    });
+
+    $('#set_block_btn').click(function () {
+      var $me = $(this);
+      var action = $me.attr('action');
+      var params = {
+        _csrf: '<%- csrf %>',
+        action: action
+      };
+      if (action === 'set_block' && !confirm('Set block?')) {
+        return;
+      }
+      $.post('/user/<%- user.loginname %>/block', params, function (data) {
+        if (data.status === 'success') {
+          if (action === 'set_block') {
+            $me.html('cancel_block');
+            $me.attr('action', 'cancel_block');
+          } else if (action === 'cancel_block') {
+            $me.html('set_block');
+            $me.attr('action', 'set_block');
+          }
+        }
+      }, 'json');
+    })
+
+    $('#delete_all').click(function () {
+      var $me = $(this);
+      var params = {
+        _csrf: '<%- csrf %>',
+      };
+      if (!confirm('Are you sure you want to delete it? (Not permanently deleted)')) {
+        return;
+      }
+      $.post('/user/<%- user.loginname %>/delete_all', params, function (data) {
+        if (data.status === 'success') {
+          alert('Done!');
+        }
+      }, 'json');
+    })
+  });
+</script>
+<% } %>
