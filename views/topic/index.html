@@ -81,26 +81,26 @@
         <% if (current_user.is_admin) { %>
           <a href='/topic/<%= topic._id %>/top' data-method="post">
             <% if (topic.top) { %>
-              <i class="fa fa-lg fa-star-o" title='取消置顶'></i>
+              <i class="fa fa-lg fa-star-o" title='remove from the top'></i>
             <% } else { %>
-              <i class="fa fa-lg fa-star" title='置顶'/></i>
+              <i class="fa fa-lg fa-star" title='placed at the top'/></i>
             <% } %>
           </a>
 
 
           <a href='/topic/<%= topic._id %>/good' data-method="post">
             <% if (topic.good) { %>
-              <i class="fa fa-lg fa-heart-o" title="取消精华"></i>
+              <i class="fa fa-lg fa-heart-o" title="cancel digest "></i>
             <% } else { %>
-              <i class="fa fa-lg fa-heart" title="加精华"></i>
+              <i class="fa fa-lg fa-heart" title="add to digest "></i>
             <% } %>
           </a>
 
           <a href='/topic/<%= topic._id %>/lock' data-method="post">
             <% if (topic.lock) { %>
-              <i class="fa fa-lg fa-unlock" title='取消锁定'></i>
+              <i class="fa fa-lg fa-unlock" title='unlocked'></i>
             <% } else { %>
-              <i class="fa fa-lg fa-lock" title='锁定（不可再回复）'/></i>
+              <i class="fa fa-lg fa-lock" title='Locked (not recoverable)'/></i>
             <% } %>
           </a>
 

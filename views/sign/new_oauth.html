@@ -2,8 +2,8 @@
   <div class='panel'>
     <div class='header'>
       <ul class='breadcrumb'>
-        <li><a href='/'>主页</a><span class='divider'>/</span></li>
-        <li class='active'>通过GitHub登录成功</li>
+        <li><a href='/'>home Page</a><span class='divider'>/</span></li>
+        <li class='active'>Login by GitHub successfully</li>
       </ul>
     </div>
     <div class='inner'>
@@ -13,10 +13,10 @@
       <input type='hidden' name='isnew' value='1'/>
 
       <div class='control-group'>
-        <label class='control-label'>通过 GitHub 帐号</label>
+        <label class='control-label'>on GitHub account</label>
 
         <div class='controls'>
-          <input type='submit' class='span-info' value="直接进入">
+          <input type='submit' class='span-info' value="Enter">
         </div>
       </div>
       </form>
@@ -24,17 +24,17 @@
       <form id='signin_form' class='form-horizontal' action=<%= actionPath
       %> method='post'>
       <div class='control-group'>
-        <label class='controls'>或者</label>
+        <label class='controls'>or</label>
       </div>
       <div class='control-group'>
-        <label class='control-label' for='name'>用户名</label>
+        <label class='control-label' for='name'>uesername</label>
 
         <div class='controls'>
           <input class='input-xlarge' id='name' name='name' size='30' type='text'/>
         </div>
       </div>
       <div class='control-group'>
-        <label class='control-label' for='pass'>密码</label>
+        <label class='control-label' for='pass'>password</label>
 
         <div class='controls'>
           <input class='input-xlarge' id='pass' name='pass' size='30' type='password'/>
@@ -43,7 +43,7 @@
       <input type='hidden' name='_csrf' value='<%= csrf %>'/>
 
       <div class='form-actions'>
-        <input type='submit' class='span-primary' value='关联旧账号'/>
+        <input type='submit' class='span-primary' value='Associated used account'/>
       </div>
       </form>
     </div>

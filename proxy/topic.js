@@ -136,7 +136,7 @@ exports.getFullTopic = function (id, callback) {
   Topic.findOne({_id: id, deleted: false}, proxy.done(function (topic) {
     if (!topic) {
       proxy.unbind();
-      return callback(null, '此话题不存在或已被删除。');
+      return callback(null, 'This topic does not exist or has been deleted.');
     }
     at.linkUsers(topic.content, proxy.done('topic', function (str) {
       topic.linkedContent = str;
@@ -146,7 +146,7 @@ exports.getFullTopic = function (id, callback) {
     User.getUserById(topic.author_id, proxy.done(function (author) {
       if (!author) {
         proxy.unbind();
-        return callback(null, '话题的作者丢了。');
+        return callback(null, 'Cannot find the author');
       }
       proxy.emit('author', author);
     }));
@@ -194,7 +194,7 @@ exports.reduceCount = function (id, callback) {
     }
 
     if (!topic) {
-      return callback(new Error('该主题不存在'));
+      return callback(new Error('The topic does not exist'));
     }
     topic.reply_count -= 1;
 

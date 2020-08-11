@@ -33,7 +33,7 @@ exports.callback = function (req, res, next) {
           if (err.message.indexOf('duplicate key error') !== -1) {
             if (err.message.indexOf('loginname') !== -1) {
               return res.status(500)
-                .send('您 GitHub 账号的用户名与之前在 CNodejs 注册的用户名重复了');
+                .send('Your username in FitHub has been used in CNodejs');
             }
           }
           return next(err);
@@ -90,7 +90,7 @@ exports.create = function (req, res, next) {
         if (err.message.indexOf('duplicate key error') !== -1) {
           if (err.message.indexOf('loginname') !== -1) {
             return res.status(500)
-              .send('您 GitHub 账号的用户名与之前在 CNodejs 注册的用户名重复了');
+              .send('Your username in FitHub has been used in CNodejs');
           }
         }
         return next(err);
@@ -102,7 +102,7 @@ exports.create = function (req, res, next) {
   } else { // 关联老账号
     ep.on('login_error', function (login_error) {
       res.status(403);
-      res.render('sign/signin', { error: '账号名或密码错误。' });
+      res.render('sign/signin', { error: 'Incorrect account name or password.' });
     });
     User.findOne({loginname: loginname},
       ep.done(function (user) {

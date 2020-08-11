@@ -9,10 +9,6 @@ var client = new Redis({
   password: config.redis_password,
 });
 
-// var client = new Redis(config.redis);
-// var client = new Redis(process.env.REDIS_URL);
-
-
 client.on('error', function (err) {
   if (err) {
     logger.error('connect to redis error, check your redis config', err);

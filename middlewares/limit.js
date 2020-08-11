@@ -28,9 +28,9 @@ var makePerDayLimiter = function (identityName, identityFn) {
         } else {
           res.status(403);
           if (options.showJson) {
-            res.send({success: false, error_msg: '频率限制：当前操作每天可以进行 ' + limitCount + ' 次'});
+            res.send({success: false, error_msg: 'Frequency limit: The current operation can be performed' + limitCount + 'daily'});
           } else {
-            res.render('notify/notify', { error: '频率限制：当前操作每天可以进行 ' + limitCount + ' 次'});
+            res.render('notify/notify', { error: 'Frequency limit: The current operation can be performed ' + limitCount + ' daily'});
           }
         }
       });

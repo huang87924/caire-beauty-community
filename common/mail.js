@@ -44,12 +44,12 @@ exports.sendMail = sendMail;
 exports.sendActiveMail = function (who, token, name) {
   var from    = util.format('%s <%s>', config.name, config.mail_opts.auth.user);
   var to      = who;
-  var subject = config.name + '社区帐号激活';
-  var html    = '<p>您好：' + name + '</p>' +
-    '<p>我们收到您在' + config.name + '社区的注册信息，请点击下面的链接来激活帐户：</p>' +
-    '<a href  = "' + SITE_ROOT_URL + '/active_account?key=' + token + '&name=' + name + '">激活链接</a>' +
-    '<p>若您没有在' + config.name + '社区填写过注册信息，说明有人滥用了您的电子邮箱，请删除此邮件，我们对给您造成的打扰感到抱歉。</p>' +
-    '<p>' + config.name + '社区 谨上。</p>';
+  var subject = config.name + 'Your account is activated';
+  var html    = '<p>Hello：' + name + '</p>' +
+    '<p>This email is to confirm that you have successfully created a' + config.name + 'account，Before you can starting using this new account, we require that you verify your email by clicking on the link below, or copy-pasting it into your browser:</p>' +
+    '<a href  = "' + SITE_ROOT_URL + '/active_account?key=' + token + '&name=' + name + '">Link</a>' +
+    '<p>Thank you,</p>' +
+    '<p>' + config.name + '</p>';
 
   exports.sendMail({
     from: from,
@@ -68,12 +68,13 @@ exports.sendActiveMail = function (who, token, name) {
 exports.sendResetPassMail = function (who, token, name) {
   var from = util.format('%s <%s>', config.name, config.mail_opts.auth.user);
   var to = who;
-  var subject = config.name + '社区密码重置';
-  var html = '<p>您好：' + name + '</p>' +
-    '<p>我们收到您在' + config.name + '社区重置密码的请求，请在24小时内单击下面的链接来重置密码：</p>' +
-    '<a href="' + SITE_ROOT_URL + '/reset_pass?key=' + token + '&name=' + name + '">重置密码链接</a>' +
-    '<p>若您没有在' + config.name + '社区填写过注册信息，说明有人滥用了您的电子邮箱，请删除此邮件，我们对给您造成的打扰感到抱歉。</p>' +
-    '<p>' + config.name + '社区 谨上。</p>';
+  var subject = config.name + 'Account password reset';
+  var html = '<p>Hello：' + name + '</p>' +
+    '<p>You recently asked to reset your' + config.name + 'password.Click the link below to reset your password. If you don’t reset your password within 30 minutes, you’ll need to request another password reset. </p>' +
+    '<a href="' + SITE_ROOT_URL + '/reset_pass?key=' + token + '&name=' + name + '">Link</a>' +
+    '<p>If you did not ask us for help with your' + config.name + 'password, let us know right away. </p>' +
+    '<p>Thank you,</p>' +
+    '<p>' + config.name + '</p>';
 
   exports.sendMail({
     from: from,
