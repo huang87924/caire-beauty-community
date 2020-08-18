@@ -69,7 +69,7 @@ exports.signup = function (req, res, next) {
         // 发送激活邮件
         mail.sendActiveMail(email, utility.md5(email + passhash + config.session_secret), loginname);
         res.render('sign/signup', {
-          success: 'Welcome ' + config.name + '！We send an Email to your registration Email address. Please click the link to activate your account.'
+          success: 'Welcome ' + config.name + '！We send an Email to your registration Email address. Please click the link to activate your account. (For now, your account is activated automatically, just sign in!)'
         });
       });
 

@@ -19,7 +19,7 @@ var LoaderConnect = require('loader-connect')
 var express = require('express');
 var session = require('express-session');
 var passport = require('passport');
-require('./middlewares/mongoose_log'); // 打印 mongodb 查询日志
+require('./middlewares/mongoose_log'); // Print mongodb log
 require('./models');
 var GitHubStrategy = require('passport-github').Strategy;
 var githubStrategyMiddleware = require('./middlewares/github_strategy');
@@ -43,7 +43,7 @@ var helmet = require('helmet');
 var bytes = require('bytes')
 
 
-// 静态文件目录
+// Static file
 var staticDir = path.join(__dirname, 'public');
 // assets
 var assets = {};
@@ -69,22 +69,22 @@ app.engine('html', require('ejs-mate'));
 app.locals._layoutFile = 'layout.html';
 app.enable('trust proxy');
 
-// Request logger。请求时间
+// Request logger. time
 app.use(requestLog);
 
 if (config.debug) {
-  // 渲染时间
+  // Render time
   app.use(renderMiddleware.render);
 }
 
-// 静态资源
+// Static
 if (config.debug) {
-  app.use(LoaderConnect.less(__dirname)); // 测试环境用，编译 .less on the fly
+  app.use(LoaderConnect.less(__dirname)); // Test model, .less on the fly
 }
 app.use('/public', express.static(staticDir));
 app.use('/agent', proxyMiddleware.proxy);
 
-// 通用的中间件
+// Common middleware
 app.use(require('response-time')());
 app.use(helmet.frameguard('sameorigin'));
 app.use(bodyParser.json({limit: '1mb'}));
@@ -104,7 +104,7 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-// oauth 中间件
+// oauth middleware
 app.use(passport.initialize());
 
 // github oauth

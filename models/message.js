@@ -13,8 +13,8 @@ var ObjectId  = Schema.ObjectId;
 
 var MessageSchema = new Schema({
   type: { type: String },
-  master_id: { type: ObjectId},
-  author_id: { type: ObjectId },
+  master_id: { type: ObjectId},   // topic author
+  author_id: { type: ObjectId },  // message sender
   topic_id: { type: ObjectId },
   reply_id: { type: ObjectId },
   has_read: { type: Boolean, default: false },

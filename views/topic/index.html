@@ -135,7 +135,7 @@
   </div>
   <% if (topic.replies && topic.replies.length > 0) { %>
   <div class='panel'>
-    <div class='header'>
+    <div class='header reply-header'>
       <span class='col_fade'><%= topic.replies.length %> Reply</span>
     </div>
     <%- partial('../reply/reply', topic.replies) %>

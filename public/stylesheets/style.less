@@ -1,21 +1,49 @@
-@gray1: #e1e1e1;
-@gray2: #f6f6f6;
+@gray1:rgb(232, 248, 227) ;
+@gray2:rgb(247,206,211);
 @node_green: #80bd01;
 @node_black: #444444;
+
+@font-face {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=Y2FpcmViZWF1dHkuY29t&hmac=686c4e3f5b3641de5e3b9e4302990cee8941c3e1cb29a03c9d1d14bce1c4506d") format("woff2"),
+       url("https://fonts.shopifycdn.com/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=Y2FpcmViZWF1dHkuY29t&hmac=424a663b348e9ba8ca9353453e4602604eabbe44607d410a25aa1f28f4067de4") format("woff");
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/playfair_display/playfairdisplay_i7.7b5eb632a605dbb99140d4e15db5828adc5a093e.woff2?h1=Y2FpcmViZWF1dHkuY29t&hmac=ce5ea2877d8f43133d01a46673db757652b9c0be2b925213ffcfd9fc10e52bee") format("woff2"),
+       url("https://fonts.shopifycdn.com/playfair_display/playfairdisplay_i7.d164241d6fe16befc328a085280a1ffcaa6c95cc.woff?h1=Y2FpcmViZWF1dHkuY29t&hmac=b31ff6a1f70bf8d40d234cb9faef7493f5c1f33c49c806a98d3ba46582c00e97") format("woff");
+}
+
+@font-face {
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/josefin_sans/josefinsans_n7.ba75738508cdf6cb75183ab984567749245418ef.woff2?h1=Y2FpcmViZWF1dHkuY29t&hmac=ea05df24ea458f1d5ec8261523ed1a56aada7c67029ab645360a54bd79afa80e") format("woff2"),
+       url("https://fonts.shopifycdn.com/josefin_sans/josefinsans_n7.a2c4634c9b4e7a4bf49a23a7b0a2f41d6afbfc1a.woff?h1=Y2FpcmViZWF1dHkuY29t&hmac=114ed5019d30631641b1123679ffdd0689c90f75765a77f953d4cfb3f473cffe") format("woff");
+}
 
 /* base */
 body {
   background-color: @gray1;
-  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, sans-serif !important;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 700;
 }
 
 #main {
+  top: 20px;
   width: 90%;
-  max-width: 1400px;
+  max-width:1400px;
   min-width: 960px;
   margin: 15px auto;
-  min-height: 400px;
+  min-height: 1000px;
   position: relative;
+  right: 60px;
 }
 
 #topic_list {
@@ -28,17 +56,21 @@ body {
 
 #content {
   padding: 0;
-  margin-right: 305px;
+  margin-right: 345px;
+  font-size: 15px;
 }
 
 #sidebar {
-  width: 290px;
-  font-size: 14px;
+  width: 450px;
+  font-size: 20px;
   float: right;
   margin-bottom: 20px;
+  position: relative;
+    left: 200px;
 }
 
 #content .panel {
+  background-color:white;
 }
 
 #content .topic_full_title {
@@ -81,12 +113,15 @@ body {
 }
 
 #sidebar .panel {
-  font-size: 13px;
+  font-size: 20px;
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  
 }
 
 #sidebar .header {
   color: hsl(202, 6%, 34%);
-  border-radius: 3px 3px 0 0;
+  border-radius: 7px 7px 0 0;
 }
 
 #sidebar .topic_title {
@@ -95,9 +130,11 @@ body {
 }
 
 #footer {
+  height: 200px;
+  background-color: @gray1 ;
   clear: both;
   position: relative;
-  background: white;
+  
   &.fix-bottom{
       position: fixed;
       bottom: 0;
@@ -106,6 +143,7 @@ body {
 }
 
 #footer_main {
+  
   width: 90%;
   max-width: 1400px;
   min-width: 960px;
@@ -114,6 +152,8 @@ body {
   padding: 20px 0px;
   font-size: 13px;
   line-height: 2em;
+  height: 500px;
+
   .col_fade {
     a {
       vertical-align: bottom;
@@ -139,14 +179,15 @@ body {
 }
 
 .header .col_fade {
-  color: @node_black;
+  color:white;
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 a.dark {
+  font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
@@ -159,7 +200,7 @@ a.dark:link, a.dark:visited, a.dark:active {
 }
 
 a.dark:hover {
-  color: #385f8a;
+  color: #C71585;
 }
 
 a.light:link, a.light:visited, a.light:active {
@@ -185,17 +226,19 @@ a.light:hover {
 }
 
 .breadcrumb a {
-  color: @node_green;
+  color: white;
 }
 
 .panel .header {
-  padding: 10px 10px;
+  padding: 30px 30px;
+  color: white;
   background-color: @gray2;
   border-radius: 3px 3px 0 0;
+  font-size: 25px;
 
-  &.topic_header {
-    background-color: white;
-  }
+  // &.topic_header {
+  //   background-color: black;
+  // }
 }
 
 .panel .moon {
@@ -219,17 +262,22 @@ a.light:hover {
 }
 
 .panel .inner {
+  font-size: 15px;
+  font-weight: 900;
+  font-family:"Josefin Sans";
   line-height: 2em;
   padding: 10px;
   background-color: white;
   border-radius: 0 0 3px 3px;
+  border-top: 1px solid #e5e5e5;
   a {
-    color: #778087;
+    color: #838383;
   }
 }
 
 .panel .inner > form.form-horizontal {
   margin-top: 40px;
+
 }
 
 .panel .inner.no-padding {
@@ -245,25 +293,29 @@ a.light:hover {
 }
 
 .cell {
+  width: 1400px;
   overflow: hidden;
   position: relative;
   padding: 10px 0px 10px 10px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .panel .cell {
-  padding-right: 10px;
-  background: white;
+  width: 88%;
+  background:white;
   border-top: 1px solid rgb(240, 240, 240);
+  
+
   &:nth-child(1) {
-    border-top: none;
+  border-top: none;
   }
 }
 
 .cell .reply_count {
-  width: 70px;
+  width: 100px;
   display: inline-block;
   text-align: center;
+ 
 }
 
 .cell .count_of_replies {
@@ -282,6 +334,7 @@ a.light:hover {
 
 .cell .cell {
   padding: 10px 0px 0px 10px;
+   font-size: 15px;
 }
 
 .cell:last-child {
@@ -305,10 +358,12 @@ a.light:hover {
 }
 
 .last_time {
-  font-size: 11px;
+  font-family: "Josefin Sans";
+  font-weight: 50;  
+  font-size: 15px;
   display: inline-block;
   margin-left: 20px;
-  color: #777;
+  color:#778087 ;
 }
 
 .last_time .last_active_time {
@@ -350,7 +405,6 @@ a.last_time {
   -moz-border-radius: 8px;
   -o-border-radius: 8px;
   border-radius: 8px;
-
   padding: 1px 5px;
   background-color: @node_green;
   color: white;
@@ -397,7 +451,7 @@ a.tag_big {
 }
 
 .tag_select {
-  color: #0099ff;
+  color: #9370DB;
 }
 
 .tag_in_topic {
@@ -580,6 +634,7 @@ a.user_avatar:hover {
 .user_action {
   float: right;
   margin-left: 20px;
+  margin-right: 0px;
   font-size: 15px;
 
   a {
@@ -593,7 +648,9 @@ a.user_avatar:hover {
 
 .reply_content {
   padding-left: 50px;
+  padding-top: 50px;
   color: #333;
+  line-height: 50px;
 }
 
 .reply_editor {
@@ -691,8 +748,11 @@ img.unread {
 }
 
 #backtotop {
-  width: 24px;
+  width: 30px;
+  height: 80px;
   color: gray;
+  font-family: "Josefin Sans";
+  font-size: 15px;
   padding: 12px 0px 12px 5px;
   display: none;
   position: fixed;
@@ -799,11 +859,12 @@ textarea#title {
 /* custom bootstrap */
 .navbar {
   margin-bottom: 0px;
+  top: 20px;
   z-index: 9;
   width: 100%;
   position: relative;
-  background: @node_black;
-  font-size: 13px;
+  font-size: 25px;
+  background-color:rgb(247,206,211);
 }
 
 .navbar-inner {
@@ -821,13 +882,15 @@ textarea#title {
   min-width: 960px;
   margin: 0px auto;
   max-width: 1400px;
+  height: 100px;
+  
 }
 
 .navbar .brand {
   padding: 4px 0px 0px 20px;
   width: 120px;
-  padding: 3px 20px;
-  height: 34px;
+  padding: 20px 20px;
+  height: 50px;
   line-height: 34px;
   text-shadow: none;
   color: #cccccc;
@@ -839,20 +902,21 @@ textarea#title {
 }
 
 .navbar .navbar-search {
-  margin-top: 6px;
+  margin-top: 40px;
+  left: 50px;
 }
 
 .navbar .search-query {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  background: #888 url('../images/search.png') no-repeat 4px 4px;
-  padding: 3px 5px 3px 22px;
-  color: #666;
+  background: white url('../images/search.png') no-repeat 10px 10px;
+  padding: 10px 10px 10px 300px;
+  color: whitesmoke;
   border: 0px;
   margin-top: 2px;
 
   &:hover {
-    background-color: white;
+    background-color:#C71585;
   }
   transition: all 0.5s;
 
@@ -867,10 +931,15 @@ textarea#title {
 }
 
 .navbar .nav > li > a {
+
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  font-size: 25px;
   text-shadow: none;
-  color: #cccccc;
+  color: white;
+ 
   &:hover {
-    color: #fff;
+    color:  #C71585;
   }
 }
 
@@ -881,6 +950,7 @@ textarea#title {
 }
 
 .btn {
+   color: black;
   padding: 3px 14px;
 }
 
@@ -972,17 +1042,22 @@ div[class$=content] > blockquote > p {
 
 /* about score on sidebar */
 .top_score {
+  text-decoration: underline;
+  text-underline-color:lightslategray;
   color: gray;
   padding: 2px;
+
 }
 
 #sidebar .inner ol {
   margin: 4px 0px;
-  list-style: none;
+  // list-style: square inside url("sqpurple.gif");
+  list-style-type: none;
 }
 
 .top_score {
   margin-right: 10px;
+
 }
 
 /* format the additional msgs of topics */
@@ -1103,7 +1178,7 @@ textarea.editor {
 
   background-color: #e5e5e5;
   &:hover {
-    background-color: #909090;
+    background-color:   #C71585;
     color: white;
   }
 }
@@ -1114,7 +1189,7 @@ textarea.editor {
   color: white;
   background-color: @node_green;
   &:hover {
-    background-color: #6ba44e;
+    background-color:   #C71585;
   }
 }
 
@@ -1124,7 +1199,7 @@ textarea.editor {
   color: white;
   background-color: #08c;
   &:hover {
-    background-color: #05c;
+    background-color:   #C71585;
   }
 }
 
@@ -1133,7 +1208,7 @@ textarea.editor {
   color: white;
   background-color: #5bc0de;
   &:hover {
-    background-color: #2f96b4;
+    background-color:   #C71585;
   }
 }
 
@@ -1146,16 +1221,20 @@ textarea.editor {
 }
 
 .topic-tab {
-  margin: 0 10px;
-  color: @node_green;
+  font-size: 18px;
+  position: relative;
+  left: 90px;
+  margin: 0 60px;
+  color: white;
   &.current-tab {
-    background-color: @node_green;
+    background-color:   #D8BFD8;
     color: white;
     padding: 3px 4px;
     border-radius: 3px;
   }
   &:hover {
     text-decoration: none;
+    color:  #C71585;
   }
 }
 
@@ -1198,13 +1277,13 @@ textarea.editor {
 }
 
 .replies_history {
-  position: absolute;
+  position: relative;
   border: 1px solid #aaa;
   background-color: #FcFcFc;
   box-shadow: 2px 2px 6px #aaa;
   padding: 10px;
   min-width: 130px;
-  max-width: 300px;
+  max-width: 345px;
 
   .inner_content{
     overflow-y: auto;
@@ -1273,8 +1352,13 @@ textarea.editor {
 }
 
 .friendship-community {
+  li {
+    display: inline-block;
+  }
+  
   img {
     width: 150px;
+    padding: 20px;
   }
 }
 
@@ -1314,4 +1398,80 @@ textarea.editor {
 
 .sponsor_outlink:hover {
   text-decoration: none;
+}
+
+
+.links1 
+{
+  width: 300px;
+}
+
+.links2 {
+  width: 300px;
+}
+
+.links-1-2 {
+  float: left;
+}
+
+.links3 {
+  
+  width: 400px;
+  float: left;
+  position: relative;
+  padding: 40px;
+  
+}
+
+.links4 {
+  
+  width: 400px;
+  float: left;
+  position: relative;
+  padding: 30px;
+}
+
+.links3 > ol > li
+{
+  list-style-type: none;
+  font-family: "Josefin Sans";
+  font-size: 15px;
+  font-weight: 700;
+  width: 300px;
+  padding: 30px;
+}
+
+.links4 > ol > li
+{
+  list-style-type: none;
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  font-size: 15px;
+  width: 300px;
+  padding: 30px;
+  
+} 
+
+.inline-block
+{
+    color: gray;
+    list-style-type: none;
+    position: relative;
+    
+}
+
+.icon-fallback-text{
+    color: gray;
+    width: 300px;
+}
+
+.icon-facebook, .icon-twitter ,.icon-pinterest, .icon-youtube, .icon-instagram{
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+}
+
+#create_topic_btn .span-success {
+  font-family: "Playfair Display";
+  font-weight: 700;
 }

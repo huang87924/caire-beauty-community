@@ -18,8 +18,8 @@ var config = {
   site_headers: [
     '<meta name="author" content="huang87924@gmail.com" />'
   ],
-  site_logo: '/public/images/cnodejs_light.svg', // logo
-  site_icon: '/public/images/cnode_icon_32.png', // icon
+  site_logo: '/public/images/logo-1.png', // logo
+  site_icon: '/public/images/caire-beauty-icon.png', // icon
   // Navi bar
   site_navs: [
     // 格式 [ path, title, [target=''] ]

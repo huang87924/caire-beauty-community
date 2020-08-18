@@ -2013,7 +2013,7 @@ table {
 }
 
 .table {
-    width: 100%;
+    width: 88%;
     margin-bottom: 20px;
 }
 
@@ -4606,6 +4606,10 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav.pull-right {
     float: right;
     margin-right: 0;
+    position: absolute;
+    left: 1000px;
+    top: 40px;
+
 }
 
 .navbar .nav > li {
@@ -6167,3 +6171,5 @@ a.badge:focus {
 .affix {
     position: fixed;
 }
+
+
