@@ -39,10 +39,10 @@ var config = {
 
   // redis 
   // redis://h:p645ff027bdde2301cc3b6a919bc4acf125944e67770aead2ed113f932fad02dc@ec2-54-211-0-35.compute-1.amazonaws.com:24589
-  // redis_host: 'ec2-23-23-178-78.compute-1.amazonaws.com',
-  // redis_port: 20299,
-  // redis_db: 0,
-  // redis_password: 'p645ff027bdde2301cc3b6a919bc4acf125944e67770aead2ed113f932fad02dc',
+  redis_host: 'ec2-54-211-0-35.compute-1.amazonaws.com',
+  redis_port: 24589,
+  redis_db: 0,
+  redis_password: 'p645ff027bdde2301cc3b6a919bc4acf125944e67770aead2ed113f932fad02dc',
 
   
 
